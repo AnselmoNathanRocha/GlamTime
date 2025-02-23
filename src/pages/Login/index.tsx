@@ -101,7 +101,7 @@ export function Login() {
           shape="circle"
         />
 
-        <div className="w-full h-10 mt-2 rounded-full border border-solid border-gray-300 flex justify-center items-center relative cursor-pointer hover:border-blue-200">
+        <div className="w-full h-10 mt-2 rounded-full border bg-white border-solid border-gray-300 flex justify-center items-center relative cursor-pointer hover:border-blue-200">
           <FaFacebook className="text-blue-700 text-2xl absolute left-2" />
           <p className="text-sm font-medium text-gray-700">
             Iniciar sessão com o Facebook
