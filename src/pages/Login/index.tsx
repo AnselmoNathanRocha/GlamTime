@@ -84,7 +84,7 @@ export function Login() {
           <FaChevronRight size={10} />
         </div>
 
-        <div className="w-full relative flex flex-col justify-center items-center my-6">
+        <div className="w-full relative flex flex-col justify-center items-center mt-6 mb-8">
           <span className="w-full flex border border-solid border-gray-200" />
           <p className="text-sm text-gray-500 px-4 bg-gray-50 absolute">ou</p>
         </div>
@@ -101,12 +101,15 @@ export function Login() {
           shape="circle"
         />
 
-        <div className="w-full h-10 mt-2 rounded-full border bg-white border-solid border-gray-300 flex justify-center items-center relative cursor-pointer hover:border-blue-200">
-          <FaFacebook className="text-blue-700 text-2xl absolute left-2" />
+        <button
+          type="button"
+          className="w-full h-10 mt-2 rounded-full border bg-white border-solid border-gray-300 flex justify-center items-center relative cursor-pointer hover:border-blue-200 focus:bg-blue-50 select-none"
+        >
+          <FaFacebook className="text-blue-700 text-xl absolute left-3" />
           <p className="text-sm font-medium text-gray-700">
             Iniciar sessão com o Facebook
           </p>
-        </div>
+        </button>
       </FormRoot>
     </div>
   );
