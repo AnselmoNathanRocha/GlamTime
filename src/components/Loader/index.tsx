@@ -17,7 +17,7 @@ export function Loader({
           "rounded-full border-[3px] border-solid border-transparent animate-spin self-center",
           {
             "size-16 border-t-green-600 border-l-green-600": variant === "primary",
-            "size-6 border-t-gray-200 border-l-gray-200": variant === "secondary",
+            "size-8 border-t-gray-200 border-l-gray-200": variant === "secondary",
           },
           className
         )}

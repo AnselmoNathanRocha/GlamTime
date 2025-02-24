@@ -5,8 +5,6 @@ import { z } from "zod";
 import { Input } from "@/components/Form/Input";
 import { InputPass } from "@/components/Form/InputPass";
 import { useState } from "react";
-import { AuthResponse, authService } from "@/services/auth-service";
-import { useAuth } from "@/contexts/auth";
 import { FormRoot } from "@/components/Form/FormRoot";
 import { ButtonLoader } from "@/components/ButtonLoader";
 import { Logo } from "@/components/Logo";
@@ -31,22 +29,21 @@ export function Login() {
   const form = useForm<LoginData>({
     resolver: zodResolver(loginSchema),
   });
-  const { login } = useAuth();
 
   const onSubmit = async (data: LoginData) => {
     try {
       setError("");
       setLoading(true);
-      const response: AuthResponse = await authService.authenticate(data);
 
-      login(response.token, response.expiresAt);
+      setTimeout(() => {
+        console.log(data);
+        setLoading(false);
+      }, 2000);
     } catch (error: any) {
       console.error(error);
       if (error.response.data.error) {
         setError(error.response.data.error);
       }
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -76,8 +73,19 @@ export function Login() {
           Acessar
         </ButtonLoader>
 
-        <div className="text-sky-700 hover:opacity-90 mt-4 flex justify-center items-center gap-1">
-          <Link to={"/"} className="text-sm">
+        <div className="text-sm mt-4 flex justify-center items-center gap-1">
+          <p className="text-gray-500">Não possui uma conta?</p>
+
+          <Link
+            to={"/register"}
+            className="text-sky-700 hover:opacity-80 hover:underline"
+          >
+            Cadastrar
+          </Link>
+        </div>
+
+        <div className="text-sky-700 flex justify-center items-center gap-1 mt-1">
+          <Link to={"/"} className="text-sm hover:opacity-80 hover:underline">
             Esqueci minha senha
           </Link>
 

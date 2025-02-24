@@ -209,6 +209,28 @@ function capitalize(event: FormEvent<HTMLInputElement> | string) {
   return event;
 }
 
+function cep(event: FormEvent<HTMLInputElement> | string) {
+  function apply(value: string | null | undefined) {
+    value = value || "";
+
+    const digits = value.replace(/\D/g, "");
+    if (digits.length <= 5) {
+      return digits;
+    }
+    return digits.slice(0, 5) + "-" + digits.slice(5, 8);
+  }
+
+  if (typeof event === "string") {
+    return apply(event);
+  }
+
+  const value = event.currentTarget.value;
+  event.currentTarget.maxLength = 9;
+  event.currentTarget.pattern = "\\d{5}-\\d{3}";
+  event.currentTarget.value = apply(value);
+  return event;
+}
+
 export const masks = {
   cnpj,
   cpf,
@@ -219,7 +241,8 @@ export const masks = {
   onlyNumbers,
   onlyNumbersAndComma,
   card,
-  capitalize
+  capitalize,
+  cep,
 };
 
 export type MaskType = keyof typeof masks;

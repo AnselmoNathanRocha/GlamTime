@@ -26,6 +26,7 @@ export function Input({
   permitNegativeValues,
   showErrorMessage = true,
   errorMessage,
+  className,
   ...props
 }: InputProps) {
   const {
@@ -79,21 +80,23 @@ export function Input({
           {...additionalProps}
           placeholder=" "
           className={cn(
-            "peer w-full h-14 rounded-2xl bg-transparent text-base px-4 font-normal text-zinc-600 disabled:opacity-60 bg-gray-200 pt-2",
+            "peer w-full h-14 rounded-2xl bg-transparent text-base px-4 font-normal text-zinc-600 disabled:opacity-50 bg-gray-200 pt-2",
             {
-              "border border-solid border-red-400": !!fieldError,
+              "border border-solid border-red-400":
+                !!fieldError || errorMessage,
               "focus:border focus:border-solid focus:border-sky-800":
                 !fieldError,
               "pl-10 ": !!leftIcon,
               "pr-10": !!rightIcon,
-            }
+            },
+            className
           )}
         />
 
         <label
           htmlFor={id ?? name}
           className={cn(
-            "absolute top-1 text-xs text-gray-400 px-1 py-0 bg-gray-200 peer-placeholder-shown:top-4 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-sky-700",
+            "absolute top-1 text-xs text-gray-400 px-1 py-0 peer-placeholder-shown:top-4.5 peer-placeholder-shown:text-sm peer-placeholder-shown:text-gray-400 peer-focus:top-1 peer-focus:text-xs peer-focus:text-sky-700",
             {
               "left-3 peer-placeholder-shown:left-3 peer-focus:left-3":
                 !leftIcon,
